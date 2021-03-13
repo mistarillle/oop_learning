@@ -2,6 +2,10 @@
 #include <cstdint>
 #include <string>
 
+//-----------------------
+// Task 1
+//-----------------------
+
 class Figure {
 public:
     virtual ~Figure() {};
@@ -80,6 +84,10 @@ const void printFigureArea (Figure& figure_class) {
 
 };
 
+//-----------------------
+// Task 2
+//-----------------------
+
 class Car{
 
 protected:
@@ -120,6 +128,10 @@ public:
     : PassengerCar(company, model), Bus(company, model), Car(company, model) {
         std::cout << "Minivan's constructor is over." << std::endl;}
 };
+
+//-----------------------
+// Task 3
+//-----------------------
 
 class Fraction {
 
@@ -218,6 +230,69 @@ bool operator<=(Fraction& fr1, Fraction& fr2){
     else {return false;}
 }
 
+//-----------------------
+// Task 4
+//-----------------------
+
+class Card {
+
+    enum class cardSuits {
+        SPADES,
+        HEARTS,
+        DIAMONDS,
+        CLUBS
+    };
+
+    enum class cardValues {
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT,
+        NINE,
+        TEN,
+        JACK,
+        QUEEN,
+        KING,
+        ACE
+    };
+
+    cardSuits cardSuit;
+    cardValues cardValue = cardValues::ACE;
+
+    bool isCardClosed = true;
+
+public:
+
+    void Flip() {isCardClosed = !isCardClosed;}
+
+    const int16_t GetValue(){
+        std::cout << "Current card value is: ";
+        switch (cardValue) {
+            case cardValues::TWO: return 2;
+            case cardValues::THREE: return 3;
+            case cardValues::FOUR: return 4;
+            case cardValues::FIVE: return 5;
+            case cardValues::SIX: return 6;
+            case cardValues::SEVEN: return 7;
+            case cardValues::EIGHT: return 8;
+            case cardValues::NINE: return 9;
+            case cardValues::TEN: return 10;
+            case cardValues::JACK: return 10;
+            case cardValues::QUEEN: return 10;
+            case cardValues::KING: return 10;
+            case cardValues::ACE: return 1;
+        }
+    }
+
+    void print() {
+        if(isCardClosed) std::cout << "Card is closed" << std::endl;
+        else std::cout << "Card is open" << std::endl;
+    }
+};
+
 int main() {
 
     std::cout << "***Task 1***\n" << std::endl;
@@ -286,6 +361,12 @@ int main() {
     std::cout << "It is " << fraction2_bigger_or_equal_fraction1 << " that fraction2 bigger or equal fraction1" << std::endl;
 
     std::cout << "\n***Task 4***" << std::endl;
-    
+
+    Card card;
+    card.print();
+    card.Flip();
+    card.print();
+    std::cout << card.GetValue();
+
     return 0;
 }

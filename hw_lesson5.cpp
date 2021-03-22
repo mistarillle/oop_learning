@@ -139,8 +139,13 @@ public:
 
     }
 
-    void Clear (){
-
+void Clear () {
+        std::vector<Card*>::iterator iter = m_cards.begin();
+        for (iter = m_cards.begin(); iter != m_cards.end(); iter++)
+        {
+            delete* iter;
+            *iter = 0;
+        }
         m_cards.clear();
     }
 
